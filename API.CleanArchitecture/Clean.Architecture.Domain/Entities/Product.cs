@@ -33,17 +33,17 @@ namespace Clean.Architecture.Domain.Entities
 
         private void ValidationDomain(string name, string description, decimal price, int stock, string image)
         {
-            DomainExceptionValidation.When(string.IsNullOrEmpty(name), $" Invalid {name}");
-            DomainExceptionValidation.When(name.Length < 3, $" Invalid {name}");
+            DomainExceptionValidation.When(string.IsNullOrEmpty(name), "Invalid Name");
+            DomainExceptionValidation.When(name.Length < 3, "Invalid Name");
 
-            DomainExceptionValidation.When(string.IsNullOrEmpty(description), $" Invalid {description}");
-            DomainExceptionValidation.When(description.Length < 5, $" Invalid {description}");
+            DomainExceptionValidation.When(string.IsNullOrEmpty(description), "Invalid Description");
+            DomainExceptionValidation.When(description.Length < 5, "Invalid Description");
             
-            DomainExceptionValidation.When(price < 0, $" Invalid {price}");
+            DomainExceptionValidation.When(price < 0, "Invalid Price");
             
-            DomainExceptionValidation.When(stock < 0, $" Invalid {stock}");
+            DomainExceptionValidation.When(stock < 0, "Invalid Stock");
             
-            DomainExceptionValidation.When(image.Length < 250, $" Invalid {image}");
+            DomainExceptionValidation.When(image.Length > 250, "Invalid Image");
 
             Name = name;
             Description = description;
