@@ -6,7 +6,7 @@ namespace Clean.Architecture.WebUI.Controllers
 {
     public class CategoriesController : Controller
     {
-        private ICategoryService _categoryService;
+        private readonly ICategoryService _categoryService;
 
         public CategoriesController(ICategoryService categoryService)
         {
@@ -15,7 +15,7 @@ namespace Clean.Architecture.WebUI.Controllers
 
         [HttpGet]
         public async Task<IActionResult> Index()
-        {
+        {   
             var categories = await _categoryService.GetCategories();
             return View(categories);
         }
