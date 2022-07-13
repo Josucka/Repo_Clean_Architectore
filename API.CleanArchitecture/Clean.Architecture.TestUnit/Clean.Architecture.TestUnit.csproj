@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Clean.Architecture.Domain\Clean.Architecture.Domain.csproj" />
+    <ProjectReference Include="..\ClassLibrary2\Clean.Architecture.Domain.csproj" />
   </ItemGroup>
 
 </Project>
