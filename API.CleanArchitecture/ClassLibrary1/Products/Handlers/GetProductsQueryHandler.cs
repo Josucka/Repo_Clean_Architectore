@@ -22,4 +22,4 @@ namespace Clean.Architecture.Application.Products.Handlers
             return await _repository.GetProductAsync();
         }
     }
-}//CQRS Aula 56
+}
