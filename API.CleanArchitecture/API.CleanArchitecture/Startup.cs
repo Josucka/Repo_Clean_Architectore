@@ -22,11 +22,8 @@ namespace API.CleanArchitecture
         {
             services.AddInfrastructureAPI(Configuration);
             services.AddInfrastructureJWT(Configuration);
+            services.AddInfrastructSwagger();
             services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "API.CleanArchitecture", Version = "v1" });
-            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,8 +38,11 @@ namespace API.CleanArchitecture
 
             app.UseHttpsRedirection();
 
+            app.UseStatusCodePages();
+
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

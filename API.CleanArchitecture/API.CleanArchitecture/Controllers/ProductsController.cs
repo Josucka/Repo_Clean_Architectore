@@ -1,5 +1,6 @@
 ﻿using Clean.Architecture.Application.DTOs;
 using Clean.Architecture.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections;
@@ -10,6 +11,8 @@ namespace Clean.Architecture.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
+
     public class ProductsController : ControllerBase
     {
         private readonly IProductService _product;

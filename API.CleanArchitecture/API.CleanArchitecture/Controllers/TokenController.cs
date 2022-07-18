@@ -1,5 +1,6 @@
 ﻿using Clean.Architecture.Api.Models;
 using Clean.Architecture.Domain.Account;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -41,7 +42,8 @@ namespace Clean.Architecture.Api.Controllers
             }
 
         }
-            
+
+        [AllowAnonymous]
         [HttpPost("LoginUser")]
         public async Task<ActionResult<UserTokens>> Login([FromBody] LoginModel model)
         {
