@@ -3,6 +3,7 @@ using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Clean.Architecture.Application.DTOs
 {
@@ -35,6 +36,7 @@ namespace Clean.Architecture.Application.DTOs
         [DisplayName("Product Image")]
         public string Image { get; set; }
 
+        [JsonIgnore]
         public Category Category { get; set; }
 
         [DisplayName("Catergories")]
