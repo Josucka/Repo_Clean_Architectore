@@ -1,3 +1,4 @@
+using Clean.Architecture.Domain.Account;
 using Clean.Architecture.Infra.Ioc;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -25,7 +26,7 @@ namespace Clean.Architecture.WebUI
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ISeedUserRoleInitial seed)
         {
             if (env.IsDevelopment())
             {
@@ -42,6 +43,10 @@ namespace Clean.Architecture.WebUI
 
             app.UseRouting();
 
+            seed.SeedRoles();
+            seed.SeedUser();
+
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

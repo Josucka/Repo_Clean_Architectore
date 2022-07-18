@@ -15,9 +15,9 @@ using System;
 
 namespace Clean.Architecture.Infra.Ioc
 {
-    public static class DependencyInjection
+    public static class DependencyInjectionAPI
     {
-        public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddInfrastructureAPI(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                                   options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
@@ -26,8 +26,6 @@ namespace Clean.Architecture.Infra.Ioc
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
-            //serviço de redirecionamento do usuario caso ele nao tenha feito login
-            services.ConfigureApplicationCookie(option => option.AccessDeniedPath = "/Account/Login");
 
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
@@ -36,7 +34,6 @@ namespace Clean.Architecture.Infra.Ioc
             services.AddScoped<ICategoryService, CategoryService>();
 
             services.AddScoped<IAuthenticate, AuthenticateService>();
-            services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
 
             services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
 
